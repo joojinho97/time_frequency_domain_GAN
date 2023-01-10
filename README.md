@@ -1,10 +1,28 @@
-we focuse to propose not mentioned problem in generate model(GAN,AutoEncoder,Autoregressive model, etc) and how to solve.
+<p align="center">
+ 
+ <h2 align="center">Posed an issue at generative AI from time domainand solve the problem(under review)</h2>
+</p>
+<br/>
 
-we think 
+### Subject : we focuse to propose not mentioned problem in generative model(GAN, AutoEncoder, Autoregressive model, etc) and how to solve.
 
-1. we can imagine 3-Dimension, watching the picutre. because we live in 3-Dimension world
+<br/>
+<br/>
+<p align="center">
 
-2. if the people(generate model) who live in 2-Dimension world watching the picture(2d data), can they imagine(3d-data)?
+
+
+  <img src="https://user-images.githubusercontent.com/81897022/211502477-85377e52-3b0a-45d2-b0f7-a804f39535b8.png" alt="text" width="number" />
+
+<br/>
+<br/>
+
+we think idea at
+
+
+* we can imagine 3-Dimension, watching the picutre. because we live in 3-Dimension world
+
+* if the people(generative model) who live in 2-Dimension world watching the picture(2d data), can they imagine(3d-data)?
 
 <br/><br/>
 
