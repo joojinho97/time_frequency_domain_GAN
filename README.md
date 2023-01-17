@@ -6,7 +6,7 @@
 
 ### Subject : we focuse to propose not mentioned problem in generative model (GAN, AutoEncoder, Autoregressive model, etc) and how to solve.
 
-<br/>
+<br/> 
 <br/>
 <p align="center">
 
