@@ -28,11 +28,13 @@ from sklearn.utils import shuffle
 from scipy import signal
 import json
 import librosa
-time_len = 512
 import tensorflow_io as tfio
 from pydub import AudioSegment
 from loss import *
 
+
+kernel = 16
+stride= 4
 def filter_ecg(signal, sampling_rate):
     
     signal = np.array(signal)
@@ -43,7 +45,6 @@ def filter_ecg(signal, sampling_rate):
                                   order=order,
                                   frequency=[3, 45],
                                   sampling_rate=sampling_rate)
-    
     return filtered
     
     
@@ -95,7 +96,6 @@ def preprocess(path):
     return data, data_label
     
     
-    
 def train_step(input_image, target, epoch,generator,discriminator,generator_optimizer,discriminator_optimizer,s,p):
     with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
       gen_output = generator(input_image, training=True)
@@ -120,16 +120,11 @@ def train_step(input_image, target, epoch,generator,discriminator,generator_opti
     
     print('epoch {} gen_total_loss {} gen_gan_loss {} gen_l1_loss {}'.format(s,gen_total_loss,gen_gan_loss,gen_l1_loss))
 
-kernel = 16
-stride= 4
+
 def onelead_model():
-
-
-  
     initializer = tf.random_normal_initializer(0., 0.02)
     time_len = 131072
 
-    
     encoder_inputs=keras.Input(shape=(time_len,1),name='data')
     
     x=tf.keras.layers.Conv1D(64, (kernel), strides=(stride), padding='same',kernel_initializer=initializer, use_bias=False)(encoder_inputs)#8
@@ -181,13 +176,6 @@ def onelead_model():
 
     return keras.Model(encoder_inputs,encoder_outputs)
     
-    
-    
-    
-    
-    
-
-
 
 def train_(train,train_label,p,path):
     
@@ -249,13 +237,8 @@ def train_(train,train_label,p,path):
     
     
     generator=keras.Model(encoder_inputs,encoder_outputs)
-    
-    
-    
     generator.summary()
-    
-
-    
+   
     inp = tf.keras.layers.Input(shape=[time_len,1], name='input_image')
     tar = tf.keras.layers.Input(shape=[time_len,1], name='target_image')
 
@@ -280,12 +263,6 @@ def train_(train,train_label,p,path):
     discriminator=tf.keras.Model(inputs=[inp,tar], outputs=last)
     discriminator.summary()
     
-
-
-    
-
-
-    
     generator_optimizer = tf.keras.optimizers.Adam(MyLRSchedule(1e-4), beta_1=0.5)
     discriminator_optimizer = tf.keras.optimizers.Adam(MyLRSchedule(1e-4), beta_1=0.5)
 
@@ -301,10 +278,6 @@ def train_(train,train_label,p,path):
 
       if (epoch + 1) % 1 == 0:
         generator.save_weights(f'/home/jhjoo/voice/tf_hightone/generator{epoch+1}.h5')
-
-    
-
-    
 
 if __name__=='__main__':
     
