@@ -1,6 +1,6 @@
 <p align="center">
  
- <h2 align="center">Posed an issue at generative AI from time domainand solve the problem(under review)</h2>
+ <h2 align="center">Posed an issue at generative AI from time domain and solve the problem(under review)</h2>
 </p>
 <br/>
 
