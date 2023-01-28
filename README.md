@@ -1,6 +1,6 @@
 <p align="center">
  
- <h2 align="center">Posed an issue at generative AI from time domain and solve the problem(under review)</h2>
+ <h2 align="center">Actual available augmentation model for signal data</h2>
 </p>
 <br/>
 
